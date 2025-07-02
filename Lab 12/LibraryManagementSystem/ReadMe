@@ -1,0 +1,50 @@
+# Book Lending Component System
+
+A modular and extensible Java-based system that simulates a basic book lending environment. This project demonstrates key software engineering principles such as separation of concerns, interface-driven design, and component reusability. Users can add, list, and delete books through a simple CLI interface, with support for both in-memory and file-based data storage.
+
+This system is ideal for demonstrating the fundamentals of clean architecture and plug-and-play components, making it easy to extend with additional features like database support or advanced logging mechanisms.
+
+## ✨ Features
+
+- 📚 Add, list, and delete books
+- 🗃️ Pluggable storage (in-memory or file-based)
+- 🧩 Decoupled logging via interface
+- 🧪 Easy to extend (e.g., JDBC, file logger, etc.)
+
+## 🏗️ Architecture
+
+| Component        | Responsibility                  |
+|------------------|----------------------------------|
+| `Book`           | Data model                      |
+| `LibraryService` | Business logic interface         |
+| `LibraryComponent` | Implements `LibraryService`    |
+| `LibraryStorage` | Storage interface (swappable)   |
+| `Logger`         | Logging abstraction              |
+| `MainApp`        | CLI interface for user actions   |
+
+## 🚀 How to Run
+
+```bash
+# Compile
+javac -d out $(find src -name "*.java")
+
+# Run with in-memory storage
+java -cp out MainApp
+
+# Run with file-based storage (data saved in src/library_data.txt)
+java -cp out MainApp file
+````
+
+## 📂 Data Storage
+
+* File-based mode stores book data in `src/library_data.txt`
+* You can easily plug in any other storage (e.g., database) by implementing `LibraryStorage`
+
+## 📝 Sample Log Output
+
+```
+2025-07-02T15:30:12.335  Added   : Clean Code by Robert C. Martin
+2025-07-02T15:32:45.101  Deleted : 1984
+```
+
+---
